@@ -14,26 +14,28 @@
     'use strict';
 
     class LikeButton extends React.Component{
-        constructor(props){
-            super(props);
-            this.state = {liked: false}; //데이터
+        state = {liked: false};
+
+        onClickButton = () => {
+            this.setState({liked: true});
         }
+
         render() {
             if(this.state.liked){
                 return 'You liked this.'
             }
 
             // return React.createElement('button', {onClick: () => this.setState({liked: true})}, 'Like');//화면
-            return <div>
-                <button onClick={() => this.setState({liked: true})}>
-                    {this.state.liked? 'Liked': 'Like!'}
+            return (
+                <button onClick={this.onClickButton}>
+                    Like
                 </button>
-            </div>
+            );
         } 
     } // 1% ErrorBoundory 리액트는 데이터 중심으로 움직인다, 리액트는 자바스크립트
 </script>
 <script type="text/babel">
-    // ReactDOM.render(<LikeButton />, document.querySelector('#root')); //React 17버전
+    // ReactDOM.render(<LikeButton />, document.querySelector('#root')); React 17버전
     ReactDOM.createRoot(document.querySelector('#root')).render(
         <div>
             <LikeButton />
